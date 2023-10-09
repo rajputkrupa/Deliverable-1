@@ -6,7 +6,8 @@ package higherlowergame;
 
 /**
  *
- * @author krupa
+ * @author aarzoo,krupa,chirag
+ Date: 09/10/23
  */
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,11 +26,11 @@ public class HigherLowerGame {
             Card current = deck.get(0);
             System.out.println("Current: " + current);
 
-            System.out.print("Predict 'H' for higher or 'L' for lower: ");
+            System.out.print("Predict 'H' for higher, 'L' for lower, or 'S' for same: ");
             String guess = in.nextLine().trim().toLowerCase();
 
-            if (!guess.equals("h") && !guess.equals("l")) {
-                System.out.println("Invalid input. Please choose either 'H' for higher or 'L' for lower.");
+            if (!guess.equals("h") && !guess.equals("l") && !guess.equals("s")) {
+                System.out.println("Invalid input. Please choose 'H' for higher, 'L' for lower, or 'S' for same.");
                 continue;
             }
 
@@ -37,8 +38,15 @@ public class HigherLowerGame {
             System.out.println("Next: " + next);
 
             if ((guess.equals("h") && next.getValue() > current.getValue()) ||
-                (guess.equals("l") && next.getValue() < current.getValue())) {
+                (guess.equals("l") && next.getValue() < current.getValue()) ||
+                (guess.equals("s") && next.getValue() == current.getValue())) {
                 System.out.println("You are Correct! Congratulations!");
+
+                // Check if the selected card is the same as the one drawn
+                if (next.getValue() == current.getValue() && next.getSuit().equals(current.getSuit())) {
+                    System.out.println("Bingo! This is a lucky card!");
+                }
+
                 score++;
             } else {
                 System.out.println("You're wrong! The game is over. Your score is: " + score);

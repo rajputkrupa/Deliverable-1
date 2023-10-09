@@ -44,7 +44,7 @@ public class HigherLowerGame {
 
                 // Check if the selected card is the same as the one drawn
                 if (next.getValue() == current.getValue() && next.getSuit().equals(current.getSuit())) {
-                    System.out.println("Bingo! This is a lucky card!");
+                    System.out.println("Bingo! The Card which you have chosen is a lucky card!");
                 }
 
                 score++;
